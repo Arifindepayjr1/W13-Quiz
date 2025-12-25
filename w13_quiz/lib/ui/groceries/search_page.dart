@@ -13,7 +13,7 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   final _searchingTextController = TextEditingController();
-  late List<Grocery> _filterList;
+  late List<Grocery> _filterList = [];
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -36,12 +36,12 @@ class _SearchPageState extends State<SearchPage> {
                 itemCount: _filterList.length,
                 itemBuilder: (ctx, index) {
                   return ListTile(
-                          leading: Container(width: 15, height: 15, color: _filterList[index].category.color),
-                                          title: Text(_filterList[index].name),
-                                          trailing: Text(_filterList[index].quantity.toString()),
-                   );
-                },
-              ),
+                        leading: Container(width: 15, height: 15, color: _filterList[index].category.color),
+                        title: Text(_filterList[index].name),
+                        trailing: Text(_filterList[index].quantity.toString()),
+            );
+          },
+        ),
       ],
     );
   }
