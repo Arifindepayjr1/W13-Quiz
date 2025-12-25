@@ -24,7 +24,7 @@ class _SearchPageState extends State<SearchPage> {
             _filterList = [];
             setState(() {
               for (int i = 0; i < dummyGroceryItems.length; i++) {
-                if (dummyGroceryItems[i].name.contains(value)) {
+                if (dummyGroceryItems[i].name.startsWith(value.toUpperCase())) {
                   _filterList.add(dummyGroceryItems[i]);
                 }
               }
