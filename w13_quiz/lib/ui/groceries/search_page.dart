@@ -21,6 +21,7 @@ class _SearchPageState extends State<SearchPage> {
         TextField(
           controller: _searchingTextController,
           onChanged: (value) {
+            _filterList = [];
             setState(() {
               for (int i = 0; i < dummyGroceryItems.length; i++) {
                 if (dummyGroceryItems[i].name.contains(value)) {
@@ -32,16 +33,22 @@ class _SearchPageState extends State<SearchPage> {
         ),
         _filterList.isEmpty
             ? Text("")
-            : ListView.builder(
-                itemCount: _filterList.length,
-                itemBuilder: (ctx, index) {
-                  return ListTile(
-                        leading: Container(width: 15, height: 15, color: _filterList[index].category.color),
-                        title: Text(_filterList[index].name),
-                        trailing: Text(_filterList[index].quantity.toString()),
-            );
-          },
-        ),
+            : Expanded(
+                child: ListView.builder(
+                  itemCount: _filterList.length,
+                  itemBuilder: (ctx, index) {
+                    return ListTile(
+                      leading: Container(
+                        width: 15,
+                        height: 15,
+                        color: _filterList[index].category.color,
+                      ),
+                      title: Text(_filterList[index].name),
+                      trailing: Text(_filterList[index].quantity.toString()),
+                    );
+                  },
+                ),
+              ),
       ],
     );
   }
